@@ -1,0 +1,302 @@
+@import "variables";
+@import "modules";
+
+// responsive yapı
+@mixin mobile{
+    @media (max-width:800px){
+        @content;  //content sayesinde, mixin'i istediğimiz yerde çağırıp buranın içine gelecek değerleri belirleyebiliyoruz.
+    }
+}
+@mixin laptop{
+    @media (min-width:800px) and (max-width:1400px){
+        @content;
+    }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img{
+    mix-blend-mode: darken;
+}
+
+
+body{
+    background-color: $bg-color;
+    font-family: $main-font;
+    overflow-x: hidden;
+}
+
+// header
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    img{
+        width: 100px;
+        height: auto;
+    }
+
+    nav{
+        display: flex;
+        align-items: center;
+
+        a{
+            text-decoration: none;
+            color: $text-color;
+
+            &:hover{
+                color: crimson;
+                transition: all .3s;
+            }
+        }
+    }
+
+    #nav-left{
+
+        a{
+            text-transform: uppercase;
+            padding: 0 17px;
+            border-right: 1px solid gray;
+
+            &:last-child{     //sonuncusunun sağındaki çizgiyi kaldırmak için onu last-child ile seçip border none yaptık
+                border-right: none; 
+            }
+        }
+    }
+
+    .opener{
+       display: none;
+       position: absolute; 
+       right: 0;
+       bottom: -122px;
+       background-color: $bg-color;
+       box-shadow: 0 0 10px $text-color;
+       flex-direction: column;
+       gap: 20px;
+       padding: 5px;
+       border-radius: 5px;
+
+       a{
+        text-decoration: none;
+        color: $text-color;
+       }
+    }
+
+    .menu{
+        width: 35px;
+        display: none;
+        @include mobile{
+            display: block; //küçük ekranlarda görünecek yani
+        }
+        &:hover + .opener{  // + derken hemen sonrasında gelen opener elemanı kastediliyor
+            display: flex;  //hover olduğunda görünümü none değil flex olacak
+        }
+    }
+
+    #nav-right{
+        margin-right: 15px;
+        @include mobile{
+            display: none;
+        }
+
+        a{
+            font-size: 15px;
+            padding: 0 15px;
+        }
+    }    
+}
+
+// karşılama alanı
+.hero{
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 50px;
+    margin: 0 auto;
+    background: linear-gradient(rgb(215,215,215)40%, $bg-color 40%);
+    // gri renkten bg-color'a geçiş yapsın istedik. 
+    // %40 derken, %40' kadar grilik olsun, %40 dan sonra bg-color başlasın dedik.
+    @include mobile{  //mixini dahil ettik
+        flex-direction: column;  //burası da direk yukarıda mixin de tanımladığımız content'in içine gidiyor
+        align-items: center;
+    }
+    @include laptop{
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+    }
+}
+
+.slogan{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    max-width: 500px;
+    @include mobile{
+        gap: 20px
+    }
+
+    h1{
+        @extend %heading;
+        font-size: 40px;
+        @include mobile{
+            text-align: center
+        }
+        span{
+            font-family: 'Times New Roman', Times, serif;
+        }
+    }
+    p{
+        @extend %p;
+    }
+    img{
+        margin-bottom: 50px;
+        width: 225px;
+        mix-blend-mode: darken
+        /* elemanın içeriğindeki renkler ile altındaki içeriğin renkleri arasındaki 
+        farkı azaltarak genel olarak daha koyu bir görünüm elde edilmesini sağlar.*/
+    }
+    h2{
+        @extend %heading;
+        span{
+            font-family: cursive;
+        }
+    }
+    button{
+        @extend %button;
+        background-color: crimson;
+        &:hover{
+            background-color: rgb(168, 16, 46);
+            transition: all .3s;
+        }
+    }
+}
+
+.images{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    &-banner{
+        max-width: 800px;
+        @include laptop{
+            max-width: 500px;
+        }
+        @include mobile{
+            max-width: 400px;
+        }
+    }
+
+    &-track{
+        max-width: 450px;
+        mix-blend-mode: darken;
+    }
+
+    p{
+        max-width: 500px;
+        text-align: center;
+    }
+}
+
+// İç Dizayn
+#interior{
+    @extend %design;
+    background-image:radial-gradient(rgba(0, 0, 0, 0.5),black) ,url("/images/interior.jpg");
+    // radial gradient'i resimden önce yazmalıyız yoksa resmin alıtında kalır, görünmez
+    background-attachment: fixed;
+}
+
+// dış dizayn
+#exterior{
+    @extend %design;
+    background-image: radial-gradient(rgba(0,0,0,0.4), black), url(/images/exterior-4.jpg);
+}
+
+// arabalar
+#cars-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0;
+
+    span{
+        color: red;
+    }
+
+    .cars{
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        @include mobile{
+            flex-direction: column;
+        }
+
+        img{
+            width: 300px;
+        }
+
+        h3{
+            text-align: center
+        }
+    }
+    button{
+        @extend %button;
+        background-color: crimson;
+        color: #fff;
+        padding: 13px 30px;
+        margin-top: 50px;
+        &:hover{
+            background-color: rgb(255, 75, 111);
+            color: #fff;
+            transition: all .3s;
+        }
+    }
+}
+
+// footer
+footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    padding: 50px;
+    @include mobile{
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    img{
+        width: 70px;
+        height: 70px;
+        mix-blend-mode: unset; //darken özelliği varken logo görünmüyordu. unset yapınca girilmemiş değer olarak algılattık
+        // unset, ben bu değeri girmedim anlamına geliyor. ilk haline atıyor bizi.
+    }
+
+    .footer-links{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        color: $bg-color;
+        @include mobile{
+            align-items: center
+        }
+
+        h2{
+            @extend %heading;
+            color: $bg-color;
+        }
+
+        a{
+            color: $bg-color;
+            text-decoration: none;
+        }
+    }
+}

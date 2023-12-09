@@ -1,0 +1,314 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+footer .footer-links h2, .slogan h2, .slogan h1, #exterior h1, #interior h1 {
+  font-family: "Inter";
+  color: #252a34;
+}
+
+.slogan p, #exterior p, #interior p {
+  color: #37393c;
+  font-size: 17px;
+}
+
+#cars-area button, .slogan button, #exterior button, #interior button {
+  padding: 10px 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#exterior, #interior {
+  height: 60vh;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+}
+#exterior h1, #interior h1 {
+  color: #fff;
+}
+#exterior p, #interior p {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 300;
+  max-width: 500px;
+  color: #fff;
+}
+#exterior button, #interior button {
+  border-radius: 0;
+  background-color: transparent;
+  border: 1px solid #fff;
+  transition: background-color 0.4s;
+  padding: 15px 40px;
+}
+#exterior button:hover, #interior button:hover {
+  background-color: #fff;
+  color: black;
+  transition: all 0.4s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  mix-blend-mode: darken;
+}
+
+body {
+  background-color: #eaeaea;
+  font-family: "Poppins";
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+header img {
+  width: 100px;
+  height: auto;
+}
+header nav {
+  display: flex;
+  align-items: center;
+}
+header nav a {
+  text-decoration: none;
+  color: #252a34;
+}
+header nav a:hover {
+  color: crimson;
+  transition: all 0.3s;
+}
+header #nav-left a {
+  text-transform: uppercase;
+  padding: 0 17px;
+  border-right: 1px solid gray;
+}
+header #nav-left a:last-child {
+  border-right: none;
+}
+header .opener {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: -122px;
+  background-color: #eaeaea;
+  box-shadow: 0 0 10px #252a34;
+  flex-direction: column;
+  gap: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+header .opener a {
+  text-decoration: none;
+  color: #252a34;
+}
+header .menu {
+  width: 35px;
+  display: none;
+}
+@media (max-width: 800px) {
+  header .menu {
+    display: block;
+  }
+}
+header .menu:hover + .opener {
+  display: flex;
+}
+header #nav-right {
+  margin-right: 15px;
+}
+@media (max-width: 800px) {
+  header #nav-right {
+    display: none;
+  }
+}
+header #nav-right a {
+  font-size: 15px;
+  padding: 0 15px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  gap: 50px;
+  margin: 0 auto;
+  background: linear-gradient(rgb(215, 215, 215) 40%, #eaeaea 40%);
+}
+@media (max-width: 800px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (min-width: 800px) and (max-width: 1400px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+  }
+}
+
+.slogan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  max-width: 500px;
+}
+@media (max-width: 800px) {
+  .slogan {
+    gap: 20px;
+  }
+}
+.slogan h1 {
+  font-size: 40px;
+}
+@media (max-width: 800px) {
+  .slogan h1 {
+    text-align: center;
+  }
+}
+.slogan h1 span {
+  font-family: "Times New Roman", Times, serif;
+}
+.slogan img {
+  margin-bottom: 50px;
+  width: 225px;
+  mix-blend-mode: darken;
+}
+.slogan h2 span {
+  font-family: cursive;
+}
+.slogan button {
+  background-color: crimson;
+}
+.slogan button:hover {
+  background-color: rgb(168, 16, 46);
+  transition: all 0.3s;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.images-banner {
+  max-width: 800px;
+}
+@media (min-width: 800px) and (max-width: 1400px) {
+  .images-banner {
+    max-width: 500px;
+  }
+}
+@media (max-width: 800px) {
+  .images-banner {
+    max-width: 400px;
+  }
+}
+.images-track {
+  max-width: 450px;
+  mix-blend-mode: darken;
+}
+.images p {
+  max-width: 500px;
+  text-align: center;
+}
+
+#interior {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.5), black), url("/images/interior.jpg");
+  background-attachment: fixed;
+}
+
+#exterior {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.4), black), url(/images/exterior-4.jpg);
+}
+
+#cars-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0;
+}
+#cars-area span {
+  color: red;
+}
+#cars-area .cars {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+@media (max-width: 800px) {
+  #cars-area .cars {
+    flex-direction: column;
+  }
+}
+#cars-area .cars img {
+  width: 300px;
+}
+#cars-area .cars h3 {
+  text-align: center;
+}
+#cars-area button {
+  background-color: crimson;
+  color: #fff;
+  padding: 13px 30px;
+  margin-top: 50px;
+}
+#cars-area button:hover {
+  background-color: rgb(255, 75, 111);
+  color: #fff;
+  transition: all 0.3s;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  padding: 50px;
+}
+@media (max-width: 800px) {
+  footer {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+footer img {
+  width: 70px;
+  height: 70px;
+  mix-blend-mode: unset;
+}
+footer .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #eaeaea;
+}
+@media (max-width: 800px) {
+  footer .footer-links {
+    align-items: center;
+  }
+}
+footer .footer-links h2 {
+  color: #eaeaea;
+}
+footer .footer-links a {
+  color: #eaeaea;
+  text-decoration: none;
+}/*# sourceMappingURL=style.css.map */
